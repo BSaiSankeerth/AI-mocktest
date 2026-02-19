@@ -58,7 +58,6 @@ exports.uploadResume = async (req, res) => {
             duration: 35
         });
 
-        console.log(`✅ New test created: ${newTest._id} with ${aiQuestions.length} questions`);
 
         return res.status(201).json({
             message: "New test generated",
@@ -97,7 +96,6 @@ exports.startTest = async (req, res) => {
         });
 
         if (existingAttempt) {
-            console.log(`🔄 Resuming attempt: ${existingAttempt._id}`);
             return res.json({
                 message: "Resuming ongoing test",
                 attemptId: existingAttempt._id,
@@ -120,7 +118,6 @@ exports.startTest = async (req, res) => {
             status: "in-progress"
         });
 
-        console.log(`🆕 New attempt: ${attempt._id} for test: ${testId}`);
 
         return res.json({
             message: "Test started",
@@ -235,7 +232,6 @@ exports.submitTest = async (req, res) => {
 
         await attempt.save();
 
-        console.log(`✅ Test submitted: ${attemptId} | Score: ${score}/${test.questions.length} (${percentage}%)`);
 
         // Return full result so frontend can use it immediately
         return res.json({

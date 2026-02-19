@@ -27,7 +27,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.json({ message: "AI Adaptive Mock Interview API Running" });
 });
-console.log("Loaded GROQ KEY:", process.env.GROQ_API_KEY);
+
 
 
 app.use("/api/auth", authRoutes);

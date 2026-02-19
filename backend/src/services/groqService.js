@@ -1,7 +1,6 @@
 const axios = require("axios");
 const { parseAIResponse } = require("../utils/aiUtils");
 
-console.log("Groq Key Loaded:", process.env.GROQ_API_KEY ? "Yes" : "No");
 
 const generateMockTestFromResume = async (resumeText) => {
     try {
@@ -52,7 +51,6 @@ Do not add text outside JSON.
         );
 
         const content = response.data.choices[0].message.content;
-        console.log("Groq Raw Response:", content ? content.substring(0, 50) + "..." : "EMPTY");
 
         const parsed = parseAIResponse(content);
 

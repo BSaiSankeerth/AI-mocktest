@@ -8,7 +8,6 @@
 const parseAIResponse = (response) => {
     if (!response) return null;
     try {
-        console.log("Raw Response received:", response.substring(0, 100)); // Log first 100 chars
 
         // 1. Try finding JSON array [ ... ]
         const arrayMatch = response.match(/\[[\s\S]*\]/);

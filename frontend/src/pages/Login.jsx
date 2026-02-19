@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { LogIn } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -22,7 +23,12 @@ const Login = () => {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-bg-dark">
-            <div className="card w-full max-w-md">
+            <motion.div
+                className="card w-full max-w-md"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+            >
                 <h2 className="text-2xl font-bold text-center mb-6 text-primary flex items-center justify-center gap-2">
                     <LogIn size={24} /> Login
                 </h2>
@@ -49,9 +55,10 @@ const Login = () => {
                 <div className="mt-4 text-center text-dim text-sm">
                     Don't have an account? <Link to="/register" className="text-primary hover:underline">Register</Link>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };
 
 export default Login;
+

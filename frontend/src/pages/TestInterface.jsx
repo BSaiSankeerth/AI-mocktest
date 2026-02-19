@@ -141,7 +141,7 @@ const TestInterface = () => {
                                 onClick={() => handleAnswer(option)}
                                 className={`p-4 rounded-lg text-left border transition-all ${answers[currentQuestion] === option
                                     ? 'bg-primary/20 border-primary text-white'
-                                    : 'bg-bg-dark border-gray-700 hover:bg-gray-800'
+                                    : 'bg-bg-dark border-gray-700 text-white hover:bg-gray-800'
                                     }`}
                             >
                                 <div className="flex items-center gap-3">

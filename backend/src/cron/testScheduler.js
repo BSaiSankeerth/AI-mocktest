@@ -25,15 +25,12 @@ const initScheduler = () => {
                 if (now > expirationTime) {
                     attempt.status = "expired";
                     await attempt.save();
-                    console.log(`Updated attempt ${attempt._id} to expired`);
                 }
             }
         } catch (error) {
             console.error("Scheduler Error:", error);
         }
     });
-
-    console.log("⏳ Test Expiry Scheduler Running...");
 };
 
 module.exports = initScheduler;

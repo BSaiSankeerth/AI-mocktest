@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { UserPlus } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -22,7 +23,12 @@ const Register = () => {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-bg-dark">
-            <div className="card w-full max-w-md">
+            <motion.div
+                className="card w-full max-w-md"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+            >
                 <h2 className="text-2xl font-bold text-center mb-6 text-primary flex items-center justify-center gap-2">
                     <UserPlus size={24} /> Register
                 </h2>
@@ -49,9 +55,10 @@ const Register = () => {
                 <div className="mt-4 text-center text-dim text-sm">
                     Already have an account? <Link to="/login" className="text-primary hover:underline">Login</Link>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };
 
 export default Register;
+

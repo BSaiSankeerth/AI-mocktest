@@ -3,6 +3,7 @@ import api from '../services/api';
 import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
 import { FileText, Loader, UploadCloud } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const ResumeUpload = () => {
     const [file, setFile] = useState(null);
@@ -33,10 +34,6 @@ const ResumeUpload = () => {
                 },
             });
 
-            // Navigate to test start page (using testId)
-            // Wait we don't have a specific "Start Screen" separate from "Test Interface"? 
-            // Usually user clicks "Start" on a screen that shows details.
-            // Let's navigate to /test/:testId
             navigate(`/test/${data.testId}`);
 
         } catch (err) {
@@ -50,7 +47,12 @@ const ResumeUpload = () => {
         <div className="min-h-screen bg-bg-dark">
             <Navbar />
             <div className="container flex items-center justify-center" style={{ minHeight: 'calc(100vh - 80px)' }}>
-                <div className="card w-full max-w-lg text-center">
+                <motion.div
+                    className="card w-full max-w-lg text-center"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                >
                     <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
                         <UploadCloud size={32} />
                     </div>
@@ -87,10 +89,11 @@ const ResumeUpload = () => {
                             {loading ? <><Loader className="animate-spin" /> Generating Test...</> : 'Generate Interview'}
                         </button>
                     </form>
-                </div>
+                </motion.div>
             </div>
         </div>
     );
 };
 
 export default ResumeUpload;
+

@@ -63,7 +63,6 @@ Return ONLY the JSON object. No text before or after.`
         );
 
         const content = response.data.choices[0].message.content;
-        console.log("📘 Study Plan Raw:", content ? content.substring(0, 80) + "..." : "EMPTY");
 
         const parsed = parseAIResponse(content);
 
